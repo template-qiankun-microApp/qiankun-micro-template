@@ -16,14 +16,12 @@ const manualList = []
 
 function render (props) {
   const { routerPrefix } = props
-  // let routerPrefix = null
-  // if (props) routerPrefix = props.routerPrefix
   console.log(window.__POWERED_BY_QIANKUN__, routerPrefix, '===')
   /* eslint-disable */
   router = new VueRouter({
     base: window.__POWERED_BY_QIANKUN__ ? routerPrefix : '/',
     mode: "history",
-    routes: routes.options.routes
+    routes: routes
   })
   instance = new Vue({
     router,
@@ -44,7 +42,7 @@ export async function bootstrap () {
 }
 
 export async function mount (props) {
-  // 此时需要把这个props传入store中，这样在子应用任何地方都可以使用props     ==============待处理==============
+  // 此时需要把这个props传入store中，这样在子应用任何地方都可以使用props
   const store = props.store
   store.dispatch('setCurrentMicroApp', {currentMicroApp: '微应用1'})
   props.setGlobalState({

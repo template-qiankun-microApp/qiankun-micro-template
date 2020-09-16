@@ -12,7 +12,7 @@ Vue.use(ElementUI)
 
 let router = null
 let instance = null
-const manualList = []
+let manualList = []
 
 function render (props) {
   const { routerPrefix } = props
@@ -61,6 +61,7 @@ export async function unmount () {
   manualList.forEach(manualItem => {
     manualItem.unmount()
   })
+  manualList = []
 }
 
 export async function update (props) {
